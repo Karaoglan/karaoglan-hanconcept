@@ -1,95 +1,48 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import Slogan from "@/components/slogan";
+import {Box, Button, Flex, Text} from "@chakra-ui/react";
+import {ABOUT_US, OUR_MISSION, WHY_WE} from "@/data/content";
+import ImageTextCard from "@/components/imageTextCard";
+import Offers from "@/components/offers";
+import Slider from "@/components/slider";
+import References from "@/components/references";
+import Link from "next/link";
+import {useTranslation} from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+    <main>
+      <Flex flexDirection={'column'} gap={5}>
+        <h1>{t('home')}</h1>
+        <Slogan/>
+        <ImageTextCard header='About US' text={ABOUT_US} isImageRight={true} />
+        <ImageTextCard header='Unsere Mission' text={OUR_MISSION} isImageRight={false} />
+        <ImageTextCard header='Warum wir' text={WHY_WE} isImageRight={true} />
+        <Offers />
+        <Flex flexDirection={'column'}>
+          <h4>
+            ARCHITEKTUR
+            VISUALISIRUNGEN
+          </h4>
           <h2>
-            Docs <span>-&gt;</span>
+            ENTDECKEN SIE UNSERE WUNDERWELT MIT EINEM BLICK
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        </Flex>
+        <Slider images={['img/han1.jpeg', 'img/han2.jpeg']} buttonLink={'/portfolio'} buttonText={'MEHR'} />
+        <References />
+        <Flex flexDirection={'column'}>
+          <h3>
+            Eine großartige Erfahrung erwartet Sie!
+          </h3>
+          <Text>
+            Treten Sie mit unserem lösungsorientierten Team in Kontakt – Wir freuen uns darauf, Ihre Fragen zu beantworten!
+          </Text>
+          <Link href={'/contact'}>
+            <Button>Kontaktieren Sie uns</Button>
+          </Link>
+        </Flex>
+      </Flex>
     </main>
   )
 }
