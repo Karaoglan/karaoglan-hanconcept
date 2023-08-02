@@ -32,7 +32,7 @@ export default function RootLayout({children}) {
       />
       <meta
         property="og:image"
-        content="https://devkaraoglan.website/img/han1.jpeg"
+        content="https://www.devkaraoglan.website/img/han1.jpeg"
       />
     </Head>
     <body className={inter.className}>
